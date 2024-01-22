@@ -1,7 +1,8 @@
 package main
 
-import "fmt"
+//build a REPL that reads a pokemon name and prints its stats
 
 func main() {
-	fmt.Println("hello")
+	startRepl()
+
 }
