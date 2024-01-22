@@ -11,7 +11,7 @@ func startRepl() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
-		fmt.Print("Please enter some text:")
+		fmt.Print(">>>:")
 
 		scanner.Scan()
 		text := scanner.Text()
@@ -49,6 +49,11 @@ func getCommands() map[string]cliCommand {
 			name:        "exit",
 			description: "Turn off the Pokedex",
 			callback:    callbackExit,
+		},
+		"map": {
+			name:        "map",
+			description: "Lists some location area",
+			callback:    callbackMap,
 		},
 	}
 }
