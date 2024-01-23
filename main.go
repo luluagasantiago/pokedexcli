@@ -1,6 +1,10 @@
 package main
 
-import "github.com/luluagasantiago/pokedexcli/internal/pokeapi"
+import (
+	"time"
+
+	"github.com/luluagasantiago/pokedexcli/internal/pokeapi"
+)
 
 // build a REPL that reads a pokemon name and prints its stats
 type config struct {
@@ -12,8 +16,7 @@ type config struct {
 func main() {
 
 	cfg := config{
-		pokeapiClient:       pokeapi.NewClient(),
-		nextLocationAreaURL: nil,
+		pokeapiClient: pokeapi.NewClient(time.Hour),
 	}
 
 	startRepl(&cfg)
