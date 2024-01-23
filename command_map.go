@@ -3,14 +3,11 @@ package main
 import (
 	"fmt"
 	"log"
-
-	"github.com/luluagasantiago/pokedexcli/internal/pokeapi"
 )
 
-func callbackMap() error {
-	pokeapiClient := pokeapi.NewClient()
+func callbackMap(cfg *config) error {
 
-	resp, err := pokeapiClient.ListLocationAreas()
+	resp, err := cfg.pokeapiClient.ListLocationAreas(cfg.nextLocationAreaURL)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -19,5 +16,7 @@ func callbackMap() error {
 	for _, area := range resp.Results {
 		fmt.Printf(" - %s\n", area.Name)
 	}
+	cfg.nextLocationAreaURL = resp.Next
+	cfg.prevLocationAreaURL = resp.Previous
 	return nil
 }
