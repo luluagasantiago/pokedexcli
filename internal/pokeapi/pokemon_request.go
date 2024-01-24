@@ -8,7 +8,7 @@ import (
 )
 
 func (c *Client) GetPokemon(pokemonName string) (Pokemon, error) {
-	endpoint := "/location-area/"
+	endpoint := "/pokemon/"
 	fullURL := baseURL + endpoint + pokemonName
 
 	//check the cache
